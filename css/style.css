@@ -11,8 +11,8 @@ Website:
 .aboutUsContainer h4{
     color: black;
     font-weight: bold;
-    margin-bottom: 5%;
-    margin-top: 3%;
+    margin-bottom: 2%;
+    margin-top: 1%;
     font-family: 'Julius Sans One', sans-serif;
 }
 
@@ -38,6 +38,7 @@ Website:
     height: 100%;
     margin-top: 0;
 }
+
 
 .menuIcon {
     color: red;
@@ -906,8 +907,9 @@ ul.about-flex-slides { margin-left: 0 }
 }
 /*contact*/
 .contact-map {
-    margin-top: 40px;
-    margin-bottom: 40px;
+ margin-top:  45px; 
+ margin-bottom:   45px;
+
 }
 .contact-form { margin-bottom: 20px }
 .address h4 {
