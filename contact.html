@@ -39,78 +39,23 @@
 
   <body>
     <!--header start-->
-    <header class="head-section">
-      <div class="navbar navbar-default navbar-static-top container">
-          <div class="navbar-header">
-              <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index.html">  Ippindo Ramen House</a>
-          </div>
-          <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                  <li>
-                      <a href="index.html">Home
-                      </a>
-                  </li>
-                  
-                  <li>
-                      <a href="about.html">About Us 
-                      </a>
-                  </li>
-
-                  <li>
-                      <a href="../ippindoRamen/img/ippindoMenu.pdf">Menu 
-                      </a>
-                  </li>
-
-                  <li>
-                      <a href="gallery.html">Gallery
-                      </a>                   
-                  </li>
-                
-                  <li>
-                      <a href="contact.html">Contact</a>
-                  </li>             
-              </ul>
-          </div>
-      </div>
-    </header>
-    <!--header end-->
-
-    <!--breadcrumbs start-->
-    <div class="breadcrumbs">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-sm-4">
-            <h1>
-              Contacts
-            </h1>
-          </div>
-          <div class="col-lg-8 col-sm-8">
-            <ol class="breadcrumb pull-right">
-              <li>
-                <a href="#">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Pages
-                </a>
-              </li>
-              <li class="active">
-                Contacts
-              </li>
-            </ol>
+    <div class="parallax-window coverImage" data-parallax="scroll" data-image-src="../ippindoRamen/img/ippindoImg/3.jpg">
+        <div class="container navBarContainer">
+          <div class="row">
+            <div class="col-md-12 navBarAnchor">
+              <a href="index.html">Home</a>
+              <a href="about.html">About Us</a>
+              <a href="../ippindoRamen/img/ippindoImg/ippindoMenu.pdf">Menu</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="contact.html">Contact</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--breadcrumbs end-->
 
+    <!--header end-->
+
+  
 
 
     <!--container start-->
@@ -208,7 +153,7 @@
 
     <!--google map start-->
     <div class="contact-map">
-      <div id="map-canvas" style="width: 100%; height: 400px">
+      <div id="map-canvas" style="width: 80%; height: 400px">
       </div>
     </div>
     <!--google map end-->
@@ -301,69 +246,31 @@
       </div>
     </div>
 
-    <!--footer start-->
     <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+          <div class="col-lg-12 col-sm-12 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
             <h1>
-              contact info
+              Ippindo Ramen House
             </h1>
             <address>
-              <p>
-                <i class="fa fa-home pr-10">
-                </i>
-                Address: No.XXXXXX street
-              </p>
-              <p>
-                <i class="fa fa-globe pr-10">
-                </i>
-                Mars city, Country
-              </p>
-              <p>
-                <i class="fa fa-mobile pr-10">
-                </i>
-                Mobile : (123) 456-7890
-              </p>
-              <p>
-                <i class="fa fa-phone pr-10">
-                </i>
-                Phone : (123) 456-7890
-              </p>
-              <p>
-                <i class="fa fa-envelope pr-10">
-                </i>
-                Email :
-                <a href="javascript:;">
-                  support@example.com
-                </a>
-              </p>
+              <p><i class="fa fa-home pr-10"></i>Address: No.XXXXXX street</p>
+              <p><i class="fa fa-phone pr-10"></i>Phone : (123) 456-7890 </p>
+              <p><i class="fa fa-phone pr-10"></i>Hours : Lunch </p>
+              <p><i class="fa fa-phone pr-10"></i>Hours : Dinner </p>
+              <p><i class="fa fa-envelope pr-10"></i>Email :   <a href="javascript:;">support@example.com</a></p>
+               <p>&copy; Designed by Calvin Yeung.</p>
             </address>
           </div>
         </div>
       </div>
     </footer>
-    <!-- footer end -->
-    <!--small footer start -->
-    <footer class="footer-small">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-sm-6 pull-right">
-                    <ul class="social-link-footer list-unstyled">
-                        <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                  <div class="copyright">
-                    <p>&copy; Copyright - Acme Theme by cosmic.</p>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </footer>
     <!--small footer end-->
 
     <!-- js placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="./parallax.min.js"></script>
     <script src="js/jquery.js">
     </script>
     <script src="js/bootstrap.min.js">
@@ -407,9 +314,9 @@
 
       //google map
       function initialize() {
-        var myLatlng = new google.maps.LatLng(51.508742,-0.120850);
+        var myLatlng = new google.maps.LatLng(40.179209,-75.043592);
         var mapOptions = {
-          zoom: 5,
+          zoom: 15,
           center: myLatlng,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }

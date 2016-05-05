@@ -4,6 +4,91 @@ Template Version: 1.0
 Author: cosmic
 Website:
 */
+#addressContainer {
+    text-align: center;
+}
+
+.aboutUsContainer h4{
+    color: black;
+    font-weight: bold;
+    margin-bottom: 5%;
+    margin-top: 3%;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.aboutUsContainer {
+    height: 400px;
+    line-height: 30px;
+    margin-top: 2.5%;
+    text-align: center;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.aboutUs img{
+    width: 50%;
+    margin-bottom: -4%;
+}
+
+.brandLogo {
+    width: 100%;
+}
+
+.mainImg {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+}
+
+.menuIcon {
+    color: red;
+    margin-bottom: 1.5%;
+}
+
+.menuIcon a {
+    padding-right: 1%;
+    font-size: 72px;
+}
+
+.menuIcon h4 {
+    margin-bottom: 0;
+}
+.chefBackground {
+    width: 100%;
+    height: 20%;
+}
+
+.logoBackground {
+    width: 50%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.navBarContainer {
+    position: relative;
+    padding-top: 3%;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    height: 700px;
+}
+
+.navBarAnchor a{
+    color: rgb(255,255,255);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.ramenTitle {
+    font-size: 45px;
+    color: white;
+    margin-bottom: 1.5%;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.quoteContainer {
+    color: black;
+}
 body {
     color: #797979;
     font-family: 'Lato', sans-serif;
@@ -19,7 +104,7 @@ a:focus {
     outline: none;
 }
 ::selection {
-    background: #48cfad;
+    background: red;
     color: #fff;
 }
 ::-moz-selection {
@@ -35,9 +120,9 @@ h6 {
     font-family: 'Lato', sans-serif;
     /*font-family: 'Open Sans', sans-serif;*/
 }
-a { color: #444e67 }
-a:hover { color: #48cfad }
-p { line-height: 22px }
+
+a:hover { color: red; }
+
 /*header*/
 .head-section { border-bottom: 1px solid #eee }
 .head-section .navbar {
@@ -57,8 +142,19 @@ p { line-height: 22px }
     float: right;
     margin-right: 0;
     z-index: 199;
+
 }
-.head-section .navbar-default { background-color: #fff }
+
+.navbar-nav li:hover {
+    color: #fff;
+    background-color: #48cfad;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.head-section .navbar-default {  background-color: red; }
 .head-section .nav li a,
 .head-section .nav li.active ul.dropdown-menu li a {
     color: #999;
@@ -1208,21 +1304,28 @@ ul.tag li a {
 }
 /*footer*/
 .footer {
-    background: #34495e;
+    font-family: 'Julius Sans One', sans-serif;
+    text-align: center;
+    background: black;
     color: #fff;
     padding: 50px 0;
     display: inline-block;
     width: 100%;
+    height: 400px;
     font-weight: 300;
 }
+.footer strong {
+    color: red;
+}
 .footer h1 {
-    font-size: 20px;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 35px;
     text-transform: uppercase;
     font-weight: 400;
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
-.footer address a { color: #48cfad }
+
 .tweet-box {
     background: #505b71;
     padding: 8px 15px;
@@ -1314,7 +1417,7 @@ ul.page-footer-list li i { padding-right: 10px }
 }
 .text-footer p { text-align: left }
 .address p {
-    text-align: left;
+    text-align: center;
     margin-bottom: 10px;
 }
 /*slider css*/
@@ -1953,7 +2056,7 @@ ul#filters > .active > span {
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
     margin-bottom: 2px;
-    float: left;
+  
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
@@ -2145,6 +2248,7 @@ ol.unstyled {
 }
 /* End carousel */
 .item blockquote {
+    color: black;
     border-left: none;
     margin: 0;
 }
@@ -2153,6 +2257,7 @@ ol.unstyled {
     content: "\f10d";
     font-family: 'Fontawesome';
     float: left;
+    color: black;
     margin-right: 10px;
 }
 /**
@@ -2385,7 +2490,8 @@ span.filter {
 .text-error { color: #e74c3c }
 .f-w-n { font-weight: normal }
 .hlight { }
-.pr-10 { padding-right: 10px }
+.pr-10 { padding-right: 10px;
+         color: red; }
 .pr-5 { padding-right: 5px }
 .error-inner {
     text-align: center;
@@ -2400,13 +2506,7 @@ span.filter {
     margin-top: -40px;
     padding: 30px 0;
 }
-.career-head h1,
-p { text-align: center }
-.candidate ul li { padding: 3px 0 }
-.candidate h1 { margin-bottom: 20px }
-.align-left { text-align: left }
-.privacy-terms h3,
-p { text-align: left }
+
 .terms-list {
     padding-left: 15px;
     padding-bottom: 25px;
