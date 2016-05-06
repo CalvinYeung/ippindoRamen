@@ -17,12 +17,45 @@ Website:
 }
 
 .aboutUsContainer {
-    height: 400px;
+    
+    height: 60%;
     line-height: 30px;
     margin-top: 2.5%;
     text-align: center;
     font-family: 'Julius Sans One', sans-serif;
 }
+
+.menuContainer {
+    height: 30%;
+    line-height: 30px;
+ 
+    text-align: center;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.menuContainer h4{
+    color: black;
+    font-weight: bold;
+
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.locationContainer {
+    height: 110px;
+    line-height: 30px;
+   
+    text-align: center;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.locationContainer h4{
+    color: black;
+    font-weight: bold;
+
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+
 
 .aboutUs img{
     width: 50%;
@@ -47,7 +80,7 @@ Website:
 
 .menuIcon a {
     padding-right: 1%;
-    font-size: 72px;
+    font-size: 62px;
 }
 
 .menuIcon h4 {
@@ -3073,3 +3106,16 @@ div.header h3{
     left:50%;
     top:-4px;
 }
+
+
+/*
+@media (max-width: 767px){
+    .aboutUsContainer {
+        height: 630px;
+    }
+}
+@media (max-width: 767px){
+    .aboutUsContainer {
+        height: 630px;
+    }
+}*/
