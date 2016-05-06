@@ -25,14 +25,13 @@ Website:
 .foodPicContainer {
     height: 900px;
     width: 100%;
-    margin-left: 5%;
     margin-top: 2.5%;
     margin-bottom: -3%;
 }
 
 .foodPicDiv img{
     height: 210px;
-    width: 30%;
+    width: 33%;
     padding-left: 2px;
     padding-right: 2px;
     padding-bottom: 3px;
@@ -3120,14 +3119,21 @@ div.header h3{
 }
 
 
-/*
+
 @media (max-width: 767px){
-    .aboutUsContainer {
-        height: 630px;
-    }
+.foodPicContainer {
+    height: 2550px;
+    width: 100%;
+/*    margin-top: 2.5%;
+    margin-bottom: -3%;*/
 }
-@media (max-width: 767px){
-    .aboutUsContainer {
-        height: 630px;
-    }
-}*/
+
+.foodPicDiv img{
+    height: 210px;
+    width: 99%;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 3px;
+}
+}
+
