@@ -74,17 +74,19 @@ Website:
 
 
 .menuIcon {
-    color: red;
+    color: black;
+    font-family: 'Julius Sans One', sans-serif;
     margin-bottom: 1.5%;
 }
 
 .menuIcon a {
+
     padding-right: 1%;
     font-size: 62px;
 }
 
 .menuIcon h4 {
-    margin-bottom: 0;
+    margin-bottom: 2%;
 }
 .chefBackground {
     width: 100%;
