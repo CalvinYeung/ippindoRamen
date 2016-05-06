@@ -3122,7 +3122,7 @@ div.header h3{
 
 @media (max-width: 767px){
 .foodPicContainer {
-    height: 2550px;
+    height: 1300px;
     width: 100%;
 /*    margin-top: 2.5%;
     margin-bottom: -3%;*/
@@ -3130,7 +3130,7 @@ div.header h3{
 
 .foodPicDiv img{
     height: 210px;
-    width: 99%;
+    width: 49%;
     padding-left: 2px;
     padding-right: 2px;
     padding-bottom: 3px;
