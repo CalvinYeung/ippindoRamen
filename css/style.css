@@ -15,7 +15,7 @@ Website:
 
 .aboutUsContainer {
     width: 100%;
-    height: 60%;
+    min-height: 60%;
     line-height: 30px;
     margin-top: 2.5%;
     text-align: center;
@@ -38,13 +38,20 @@ Website:
 }
 
 .menuContainer {
-    height: 30%;
+    min-height: 30%;
     line-height: 30px;
  
     text-align: center;
     font-family: 'Julius Sans One', sans-serif;
 }
 
+.mapDiv {
+     margin-top: 0;
+}
+
+.menuHeart:hover {
+    font-size: 65px;
+}
 .menuContainer h4{
     color: black;
     font-weight: bold;
@@ -53,7 +60,7 @@ Website:
 }
 
 .locationContainer {
-    height: 110px;
+    min-height: 110px;
     line-height: 30px;
    
     text-align: center;
@@ -952,8 +959,7 @@ ul.about-flex-slides { margin-left: 0 }
 }
 /*contact*/
 .contact-map {
- margin-top:  45px; 
- margin-bottom:   45px;
+ margin-top:  25px; 
 
 }
 .contact-form { margin-bottom: 20px }
@@ -1357,8 +1363,9 @@ ul.tag li a {
     color: #fff;
     padding: 50px 0;
     width: 100%;
-    height: 430px;
+    min-height: 430px;
     font-weight: 300;
+    margin-bottom: -4%;
 }
 .footer strong {
     color: red;

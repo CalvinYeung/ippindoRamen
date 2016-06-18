@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions -->
+<html lang="en" class="tr-coretext tr-aa-unknown-subpixel"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>.gitter-hidden{box-sizing:border-box;display:none}.gitter-icon{box-sizing:border-box;width:22px;height:22px;fill:currentColor}.gitter-chat-embed{box-sizing:border-box;z-index:100;position:fixed;top:0;left:60%;bottom:0;right:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color:#fff;border-left:1px solid #333;box-shadow:-12px 0 18px 0 rgba(50,50,50,.3);-webkit-transition:-webkit-transform .3s cubic-bezier(.16,.22,.22,1.7);transition:-webkit-transform .3s cubic-bezier(.16,.22,.22,1.7);transition:transform .3s cubic-bezier(.16,.22,.22,1.7);transition:transform .3s cubic-bezier(.16,.22,.22,1.7),-webkit-transform .3s cubic-bezier(.16,.22,.22,1.7)}@context border-box{.gitter-chat-embed{box-sizing:border-box;background-color:#fff}}.gitter-chat-embed.is-collapsed:not(.is-loading){box-sizing:border-box;-webkit-transform:translateX(110%);transform:translateX(110%)}.gitter-chat-embed:after{box-sizing:border-box;content:'';z-index:-1;position:absolute;top:0;left:100%;bottom:0;right:-100%;background-color:#fff}@context border-box{.gitter-chat-embed:after{box-sizing:border-box;background-color:#fff}}@media(max-width:1150px){.gitter-chat-embed{box-sizing:border-box;left:45%}}@media(max-width:944px){.gitter-chat-embed{box-sizing:border-box;left:30%}}@media(max-width:600px){.gitter-chat-embed{box-sizing:border-box;left:15%}}@media(max-width:500px){.gitter-chat-embed{box-sizing:border-box;left:0;border-left:none}}.gitter-chat-embed>iframe{box-sizing:border-box;-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;width:100%;height:100%;border:0}.gitter-chat-embed-loading-wrapper{box-sizing:border-box;position:absolute;top:0;left:0;bottom:0;right:0;display:none;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}.is-loading .gitter-chat-embed-loading-wrapper{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.gitter-chat-embed-loading-indicator{box-sizing:border-box;opacity:.75;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIGZpbGw9IiMzYTMxMzMiPjxwYXRoIGQ9Ik01MjYgMTM5NHEwIDUzLTM3LjUgOTAuNXQtOTAuNSAzNy41cS01MiAwLTkwLTM4dC0zOC05MHEwLTUzIDM3LjUtOTAuNXQ5MC41LTM3LjUgOTAuNSAzNy41IDM3LjUgOTAuNXptNDk4IDIwNnEwIDUzLTM3LjUgOTAuNXQtOTAuNSAzNy41LTkwLjUtMzcuNS0zNy41LTkwLjUgMzcuNS05MC41IDkwLjUtMzcuNSA5MC41IDM3LjUgMzcuNSA5MC41em0tNzA0LTcwNHEwIDUzLTM3LjUgOTAuNXQtOTAuNSAzNy41LTkwLjUtMzcuNS0zNy41LTkwLjUgMzcuNS05MC41IDkwLjUtMzcuNSA5MC41IDM3LjUgMzcuNSA5MC41em0xMjAyIDQ5OHEwIDUyLTM4IDkwdC05MCAzOHEtNTMgMC05MC41LTM3LjV0LTM3LjUtOTAuNSAzNy41LTkwLjUgOTAuNS0zNy41IDkwLjUgMzcuNSAzNy41IDkwLjV6bS05NjQtOTk2cTAgNjYtNDcgMTEzdC0xMTMgNDctMTEzLTQ3LTQ3LTExMyA0Ny0xMTMgMTEzLTQ3IDExMyA0NyA0NyAxMTN6bTExNzAgNDk4cTAgNTMtMzcuNSA5MC41dC05MC41IDM3LjUtOTAuNS0zNy41LTM3LjUtOTAuNSAzNy41LTkwLjUgOTAuNS0zNy41IDkwLjUgMzcuNSAzNy41IDkwLjV6bS02NDAtNzA0cTAgODAtNTYgMTM2dC0xMzYgNTYtMTM2LTU2LTU2LTEzNiA1Ni0xMzYgMTM2LTU2IDEzNiA1NiA1NiAxMzZ6bTUzMCAyMDZxMCA5My02NiAxNTguNXQtMTU4IDY1LjVxLTkzIDAtMTU4LjUtNjUuNXQtNjUuNS0xNTguNXEwLTkyIDY1LjUtMTU4dDE1OC41LTY2cTkyIDAgMTU4IDY2dDY2IDE1OHoiLz48L3N2Zz4=);-webkit-animation:spin 2s infinite linear;animation:spin 2s infinite linear}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}0%,to{box-sizing:border-box}to{-webkit-transform:rotate(359.9deg);transform:rotate(359.9deg)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}0%,to{box-sizing:border-box}to{-webkit-transform:rotate(359.9deg);transform:rotate(359.9deg)}}.gitter-chat-embed-action-bar{position:absolute;top:0;left:0;right:0;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:.7em;background:-webkit-linear-gradient(top,#fff,#fff 50%,hsla(0,0%,100%,0));background:linear-gradient(180deg,#fff 0,#fff 50%,hsla(0,0%,100%,0))}.gitter-chat-embed-action-bar,.gitter-chat-embed-action-bar-item{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.gitter-chat-embed-action-bar-item{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;width:40px;height:40px;padding-left:0;padding-right:0;opacity:.65;background:none;background-position:center center;background-repeat:no-repeat;background-size:22px 22px;border:0;outline:none;cursor:pointer;cursor:hand;-webkit-transition:all .2s ease;transition:all .2s ease}.gitter-chat-embed-action-bar-item:focus,.gitter-chat-embed-action-bar-item:hover{box-sizing:border-box;opacity:1}.gitter-chat-embed-action-bar-item:active{box-sizing:border-box;-webkit-filter:hue-rotate(80deg) saturate(150);filter:hue-rotate(80deg) saturate(150)}.gitter-chat-embed-action-bar-item-pop-out{box-sizing:border-box;margin-right:-4px;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTcxLjQyOSIgZmlsbD0iIzNhMzEzMyI+PHBhdGggZD0iTTE1Ny4xNDMsMTAzLjU3MXYzNS43MTRjMCw4Ljg1NC0zLjE0NCwxNi40MjYtOS40MzEsMjIuNzEzcy0xMy44NTgsOS40MzEtMjIuNzEyLDkuNDMxSDMyLjE0MyBjLTguODU0LDAtMTYuNDI1LTMuMTQ0LTIyLjcxMi05LjQzMVMwLDE0OC4xNCwwLDEzOS4yODVWNDYuNDI5YzAtOC44NTQsMy4xNDQtMTYuNDI1LDkuNDMxLTIyLjcxMiBjNi4yODctNi4yODcsMTMuODU4LTkuNDMxLDIyLjcxMi05LjQzMWg3OC41NzJjMS4wNDEsMCwxLjg5NiwwLjMzNSwyLjU2NiwxLjAwNGMwLjY3LDAuNjcsMS4wMDQsMS41MjUsMS4wMDQsMi41NjdWMjUgYzAsMS4wNDItMC4zMzQsMS44OTctMS4wMDQsMi41NjdjLTAuNjcsMC42Ny0xLjUyNSwxLjAwNC0yLjU2NiwxLjAwNEgzMi4xNDNjLTQuOTExLDAtOS4xMTUsMS43NDktMTIuNjEyLDUuMjQ2IHMtNS4yNDYsNy43MDEtNS4yNDYsMTIuNjEydjkyLjg1NmMwLDQuOTExLDEuNzQ5LDkuMTE1LDUuMjQ2LDEyLjYxMnM3LjcwMSw1LjI0NSwxMi42MTIsNS4yNDVIMTI1YzQuOTEsMCw5LjExNS0xLjc0OCwxMi42MTEtNS4yNDUgYzMuNDk3LTMuNDk3LDUuMjQ2LTcuNzAxLDUuMjQ2LTEyLjYxMnYtMzUuNzE0YzAtMS4wNDIsMC4zMzQtMS44OTcsMS4wMDQtMi41NjdjMC42Ny0wLjY2OSwxLjUyNS0xLjAwNCwyLjU2Ny0xLjAwNGg3LjE0MyBjMS4wNDIsMCwxLjg5NywwLjMzNSwyLjU2NywxLjAwNEMxNTYuODA5LDEwMS42NzQsMTU3LjE0MywxMDIuNTI5LDE1Ny4xNDMsMTAzLjU3MXogTTIwMCw3LjE0M3Y1Ny4xNDMgYzAsMS45MzUtMC43MDcsMy42MDktMi4xMjEsNS4wMjJjLTEuNDEzLDEuNDE0LTMuMDg4LDIuMTIxLTUuMDIxLDIuMTIxYy0xLjkzNSwwLTMuNjA5LTAuNzA3LTUuMDIyLTIuMTIxbC0xOS42NDQtMTkuNjQzIGwtNzIuNzY3LDcyLjc2OWMtMC43NDQsMC43NDQtMS42LDEuMTE1LTIuNTY3LDEuMTE1cy0xLjgyMy0wLjM3MS0yLjU2Ny0xLjExNUw3Ny41NjcsMTA5LjcxYy0wLjc0NC0wLjc0NC0xLjExNi0xLjYtMS4xMTYtMi41NjcgYzAtMC45NjcsMC4zNzItMS44MjIsMS4xMTYtMi41NjZsNzIuNzY4LTcyLjc2OGwtMTkuNjQ0LTE5LjY0M2MtMS40MTMtMS40MTQtMi4xMi0zLjA4OC0yLjEyLTUuMDIyYzAtMS45MzUsMC43MDctMy42MDksMi4xMi01LjAyMiBDMTMyLjEwNSwwLjcwNywxMzMuNzc5LDAsMTM1LjcxNSwwaDU3LjE0M2MxLjkzNCwwLDMuNjA4LDAuNzA3LDUuMDIxLDIuMTIxQzE5OS4yOTMsMy41MzQsMjAwLDUuMjA4LDIwMCw3LjE0M3oiLz48L3N2Zz4=)}.gitter-chat-embed-action-bar-item-collapse-chat{box-sizing:border-box;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzEuNDI5IDE3MS40MjkiIGZpbGw9IiMzYTMxMzMiPjxwYXRoIGQ9Ik0xMjIuNDMzLDEwNi4xMzhsLTE2LjI5NSwxNi4yOTVjLTAuNzQ0LDAuNzQ0LTEuNiwxLjExNi0yLjU2NiwxLjExNmMtMC45NjgsMC0xLjgyMy0wLjM3Mi0yLjU2Ny0xLjExNmwtMTUuMjktMTUuMjkgbC0xNS4yOSwxNS4yOWMtMC43NDQsMC43NDQtMS42LDEuMTE2LTIuNTY3LDEuMTE2cy0xLjgyMy0wLjM3Mi0yLjU2Ny0xLjExNmwtMTYuMjk0LTE2LjI5NWMtMC43NDQtMC43NDQtMS4xMTYtMS42LTEuMTE2LTIuNTY2IGMwLTAuOTY4LDAuMzcyLTEuODIzLDEuMTE2LTIuNTY3bDE1LjI5LTE1LjI5bC0xNS4yOS0xNS4yOWMtMC43NDQtMC43NDQtMS4xMTYtMS42LTEuMTE2LTIuNTY3czAuMzcyLTEuODIzLDEuMTE2LTIuNTY3IEw2NS4yOSw0OC45OTZjMC43NDQtMC43NDQsMS42LTEuMTE2LDIuNTY3LTEuMTE2czEuODIzLDAuMzcyLDIuNTY3LDEuMTE2bDE1LjI5LDE1LjI5bDE1LjI5LTE1LjI5IGMwLjc0NC0wLjc0NCwxLjYtMS4xMTYsMi41NjctMS4xMTZjMC45NjcsMCwxLjgyMiwwLjM3MiwyLjU2NiwxLjExNmwxNi4yOTUsMTYuMjk0YzAuNzQ0LDAuNzQ0LDEuMTE2LDEuNiwxLjExNiwyLjU2NyBzLTAuMzcyLDEuODIzLTEuMTE2LDIuNTY3bC0xNS4yOSwxNS4yOWwxNS4yOSwxNS4yOWMwLjc0NCwwLjc0NCwxLjExNiwxLjYsMS4xMTYsMi41NjcgQzEyMy41NDksMTA0LjUzOSwxMjMuMTc3LDEwNS4zOTQsMTIyLjQzMywxMDYuMTM4eiBNMTQ2LjQyOSw4NS43MTRjMC0xMS4wMTItMi43MTctMjEuMTY4LTguMTQ4LTMwLjQ2OSBzLTEyLjc5Ny0xNi42NjctMjIuMDk4LTIyLjA5OFM5Ni43MjYsMjUsODUuNzE0LDI1cy0yMS4xNjgsMi43MTYtMzAuNDY5LDguMTQ3UzM4LjU3OSw0NS45NDUsMzMuMTQ3LDU1LjI0NlMyNSw3NC43MDMsMjUsODUuNzE0IHMyLjcxNiwyMS4xNjgsOC4xNDcsMzAuNDY5czEyLjc5NywxNi42NjYsMjIuMDk4LDIyLjA5OHMxOS40NTcsOC4xNDgsMzAuNDY5LDguMTQ4czIxLjE2OC0yLjcxNywzMC40NjktOC4xNDggczE2LjY2Ni0xMi43OTcsMjIuMDk4LTIyLjA5OFMxNDYuNDI5LDk2LjcyNiwxNDYuNDI5LDg1LjcxNHogTTE3MS40MjksODUuNzE0YzAsMTUuNTUxLTMuODMyLDI5Ljg5My0xMS40OTYsNDMuMDI0IGMtNy42NjQsMTMuMTMzLTE4LjA2MiwyMy41My0zMS4xOTQsMzEuMTk0Yy0xMy4xMzIsNy42NjQtMjcuNDc0LDExLjQ5Ni00My4wMjQsMTEuNDk2cy0yOS44OTItMy44MzItNDMuMDI0LTExLjQ5NiBjLTEzLjEzMy03LjY2NC0yMy41MzEtMTguMDYyLTMxLjE5NC0zMS4xOTRDMy44MzIsMTE1LjYwNywwLDEwMS4yNjUsMCw4NS43MTRTMy44MzIsNTUuODIyLDExLjQ5Niw0Mi42OSBjNy42NjQtMTMuMTMzLDE4LjA2Mi0yMy41MzEsMzEuMTk0LTMxLjE5NEM1NS44MjIsMy44MzIsNzAuMTY0LDAsODUuNzE0LDBzMjkuODkzLDMuODMyLDQzLjAyNCwxMS40OTYgYzEzLjEzMyw3LjY2NCwyMy41MywxOC4wNjIsMzEuMTk0LDMxLjE5NEMxNjcuNTk3LDU1LjgyMiwxNzEuNDI5LDcwLjE2NCwxNzEuNDI5LDg1LjcxNHoiLz48L3N2Zz4=)}.gitter-open-chat-button{z-index:100;position:fixed;bottom:0;right:10px;padding:1em 3em;background-color:#36bc98;border:0;border-top-left-radius:.5em;border-top-right-radius:.5em;font-family:sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;cursor:pointer;cursor:hand;-webkit-transition:all .3s ease;transition:all .3s ease}.gitter-open-chat-button,.gitter-open-chat-button:visited{box-sizing:border-box;color:#fff}.gitter-open-chat-button:focus,.gitter-open-chat-button:hover{box-sizing:border-box;background-color:#3ea07f;color:#fff}.gitter-open-chat-button:focus{box-sizing:border-box;box-shadow:0 0 8px rgba(62,160,127,.6);outline:none}.gitter-open-chat-button:active{box-sizing:border-box;color:#eee}.gitter-open-chat-button.is-collapsed{box-sizing:border-box;-webkit-transform:translateY(120%);transform:translateY(120%)}</style>
+  <title>OS X 10.11 El Capitan Apache Setup: Multiple PHP Versions | Grav</title>
+  <meta name="generator" content="GravCMS">
+<meta name="description" content="Grav is an easy to use, yet powerful, opensource CMS that requires no database">
+<meta name="og:image" property="og:image" content="http://getgrav.org/user/pages/images/grav-homepage.jpg">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="https://getgrav-grav.netdna-ssl.com/user/themes/planetoid/images/favicon.png">
+    <link rel="alternate" type="application/atom+xml" href="https://getgrav.org/blog.atom" title="Atom Feed">
+  <link rel="alternate" type="application/rss+xml" href="https://getgrav.org/blog.rss" title="RSS Feed">
+
+                  
+    
+    <link href="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/f64b4852fe023d1afae0675dc1df3a36.css" type="text/css" rel="stylesheet">
+
+<style>
+.gist table { table-layout: auto; }
+
+</style>
+
+
+                                          <script async="" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/analytics.js"></script><script src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/90993b5266ace66cc5cc75861c481c6b.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function() {
+                    $('pre code').each(function(i, block) {
+                        hljs.highlightBlock(block);
+                    });
+                 });
+$(document).ready(function() {
+                        $('a[rel="lightbox"]').featherlight({
+                            openSpeed: 250,
+                            closeSpeed: 250,
+                            closeOnClick: 'background',
+                            root: 'body'
+                        });
+                     });
+
+</script><style type="text/css"></style>
+
+<script src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/embed.js" data-timestamp="1463099574115"></script><script src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/alfie.f51946af45e0b561c60f768335c9eb79.js" async="" charset="UTF-8"></script></head>
+<body class="">
+  <div id="overlay-wrapper">
+    <div class="nav-toggle">
+      <div class="icon"></div>
+    </div>
+    <div class="overlay-nav">
+      <nav id="menu">
+	<ul class="navigation">
+	    		    		    			    	<li class=""><a href="https://getgrav.org/"><span>Tour</span></a></li>
+		    	    		    		    			    	<li class=""><a href="https://getgrav.org/features"><span>Features</span></a></li>
+		    	    		    		    			    	<li class="active"><a href="https://getgrav.org/blog"><span>Blog</span></a></li>
+		    	    		    		    			    	<li class=""><a href="https://getgrav.org/forum"><span>Forum</span></a></li>
+		    	    		    		    			    	<li class=""><a href="https://getgrav.org/downloads"><span>Downloads</span></a></li>
+		    	    		    	    		    	    		    	    		    	    		    	    	    <li><a href="http://learn.getgrav.org/"><span>Learn</span></a></li>
+	</ul>
+</nav>
+<div class="social-wrapper">
+	<ul class="quick-links social-buttons">
+		<li><a href="http://twitter.com/getgrav"><i class="fa fa-fw fa-twitter twitter"></i></a></li>
+		<li><a href="https://github.com/getgrav/grav"><i class="fa fa-fw fa-github github"></i></a></li>
+		<li><a href="https://gitter.im/getgrav/grav" class="js-gitter-toggle-chat-button"><i class="fa fa-fw fa-comments-o chat"></i></a></li>
+		<li><a href="https://getgrav.org/blog.atom"><i class="fa fa-fw fa-feed feed"></i></a></li>
+	</ul>
+</div>
+    </div>
+  </div>
+
+    <div id="sb-site">
+          <header>
+  <div class="container">
+    <div class="row">
+      <a id="logo" href="https://getgrav.org/">
+        <svg id="grav-logo" width="100%" height="100%" viewBox="0 0 504 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M235.832,71.564l-7.98,-0.001c-1.213,0.001 -2.197,0.987 -2.197,2.204l0,15.327l-0.158,0.132c-4.696,3.962 -10.634,6.14 -16.719,6.14c-14.356,0 -26.034,-11.68 -26.034,-26.037c0,-14.358 11.678,-26.035 26.034,-26.035c5.582,0 10.919,1.767 15.437,5.113c0.877,0.649 2.093,0.56 2.866,-0.211l5.69,-5.69c0.444,-0.442 0.675,-1.055 0.639,-1.681c-0.034,-0.627 -0.336,-1.206 -0.828,-1.597c-6.76,-5.363 -15.214,-8.314 -23.805,-8.314c-21.18,0 -38.414,17.233 -38.414,38.415c0,21.183 17.234,38.415 38.414,38.415c10.937,0 21.397,-4.705 28.698,-12.914c0.358,-0.403 0.556,-0.921 0.556,-1.46l0,-19.603c0,-1.217 -0.985,-2.203 -2.2,-2.203" style="fill:#000;fill-rule:nonzero;"></path><path d="M502.794,34.445c-0.408,-0.616 -1.1,-0.989 -1.838,-0.989l-8.684,0c-0.879,0 -1.673,0.522 -2.022,1.329l-24.483,56.839l-24.92,-56.852c-0.352,-0.799 -1.142,-1.316 -2.012,-1.316l-8.713,0c-0.744,0 -1.44,0.373 -1.843,0.995c-0.408,0.623 -0.476,1.408 -0.174,2.09l30.186,68.858c0.352,0.799 1.143,1.317 2.017,1.317l10.992,0c0.879,0 1.673,-0.527 2.021,-1.329l29.655,-68.861c0.289,-0.68 0.222,-1.461 -0.182,-2.081" style="fill:#000;fill-rule:nonzero;"></path><path d="M388.683,34.772c-0.353,-0.798 -1.142,-1.316 -2.017,-1.316l-10.988,0c-0.879,0 -1.673,0.522 -2.021,1.329l-29.655,68.861c-0.294,0.675 -0.226,1.46 0.182,2.077c0.407,0.619 1.096,0.993 1.838,0.993l8.684,0c0.879,0 1.673,-0.526 2.022,-1.329l24.478,-56.842l24.92,56.854c0.353,0.798 1.143,1.317 2.013,1.317l8.717,0c0.744,0 1.44,-0.374 1.843,-0.993c0.408,-0.624 0.471,-1.41 0.174,-2.094l-30.19,-68.857Z" style="fill:#000;fill-rule:nonzero;"></path><path d="M309.196,81.525l0.476,-0.229c8.675,-4.191 14.279,-13.087 14.279,-22.667c0,-13.881 -11.295,-25.174 -25.176,-25.174l-31.863,0c-1.214,0 -2.199,0.988 -2.199,2.202l0,68.855c0,1.219 0.985,2.204 2.199,2.204l7.979,0c1.214,0 2.2,-0.985 2.2,-2.204l0,-58.679l21.684,0c7.059,0 12.799,5.739 12.799,12.796c0,5.885 -3.996,10.989 -9.728,12.408c-1.032,0.261 -2.064,0.393 -3.071,0.393l-7.977,0c-0.829,0 -1.585,0.467 -1.959,1.205c-0.378,0.74 -0.305,1.625 0.187,2.296l22.62,30.884c0.412,0.566 1.07,0.901 1.771,0.901l9.915,0c0.827,0 1.587,-0.467 1.96,-1.207c0.378,-0.742 0.302,-1.629 -0.186,-2.296l-15.91,-21.688Z" style="fill:#000;fill-rule:nonzero;"></path><path d="M107.191,80.969c-7.255,-4.794 -11.4,-8.845 -15.011,-16.109c-2.47,4.977 -8.236,12.376 -17.962,18.198c-4.856,15.106 -27.954,44.015 -35.43,39.916c-2.213,-1.212 -2.633,-2.808 -2.133,-4.456c0.536,-4.129 9.078,-13.62 9.078,-13.62c0,0 0.18,1.992 2.913,6.187c-3.609,-11.205 5.965,-25.031 8.5,-29.738c3.985,-1.269 4.274,-6.387 4.274,-6.387c0.255,-7.909 -3.278,-13.635 -6.701,-17.059c2.459,3.002 3.255,7.539 3.372,11.694l0,0.023c0.012,0.469 0.012,0.93 0.011,1.39c-0.117,3.439 -1.157,8.19 -3.383,8.19l0.006,0.03c-2.289,-0.098 -5.115,0.391 -7.639,1.18l-5.582,1.334c0,0 2.977,-0.136 4.584,1.252c-1.79,2.915 -5.769,6.533 -10.206,8.588c-6.457,2.995 -8.312,-2.964 -5.034,-6.838c0.805,-0.946 1.618,-1.745 2.387,-2.399c-0.495,-0.513 -0.807,-1.198 -0.889,-2.068c-0.001,-0.005 -0.004,-0.009 -0.005,-0.013c-0.45,-1.977 -0.202,-4.543 2.596,-8.623c0.551,-0.863 1.214,-1.748 2.007,-2.647c0.025,-0.031 0.046,-0.059 0.072,-0.089c0.034,-0.042 0.072,-0.08 0.108,-0.121c0.02,-0.023 0.039,-0.045 0.059,-0.068c0.2,-0.228 0.413,-0.45 0.639,-0.663c3.334,-3.414 8.599,-6.966 16.897,-10.152c9.675,-14.223 13.219,-16.89 13.219,-16.89c1.071,-1.096 2.943,-2.458 3.632,-2.805c-5.053,-8.781 -6.074,-21.158 -4.75,-24.493c-0.107,0.18 -0.206,0.365 -0.287,0.556c0.49,-1.143 0.819,-1.509 1.328,-2.111c1.381,-1.632 6.058,-2.488 7.737,0.971c0.895,1.844 1.063,4.232 1.034,6.023c-3.704,-0.193 -7.063,4.036 -7.063,4.036c0,0 3.067,-1.448 6.879,-1.473c0,0 1.015,0.883 2.283,2.542c-1.712,3.213 -4.524,10.021 -2.488,17.168c0.338,1.408 0.849,2.619 1.483,3.648c0.024,0.045 0.044,0.089 0.069,0.135c0.051,0.066 0.096,0.122 0.144,0.183c3.368,5.072 9.542,5.665 9.542,5.665c-2.906,-1.45 -5.274,-3.76 -6.816,-6.56c-0.8,-1.498 -1.291,-2.762 -1.592,-3.761c-1.636,-6.313 0.771,-9.999 2.149,-12.471c3.17,-4.917 8.944,-7.893 15.151,-7.185c8.712,0.995 14.968,8.862 13.973,17.571c-0.608,5.321 -3.781,9.723 -8.142,12.117c1.049,2.839 -0.073,6.28 -0.073,6.28c2.642,3.323 2.758,5.238 2.667,7.017c-3.357,-0.565 -6.618,1.701 -6.618,1.701c0,0 6.476,-1.546 10.238,1.81c2.446,2.631 4.078,5.009 5.051,6.766c1.393,2.505 7.859,2.683 7.123,7.188c-0.737,4.499 -5.669,4.542 -13.401,-0.56M69.571,0c-38.424,0 -69.571,31.148 -69.571,69.567c0,38.422 31.147,69.573 69.571,69.573c38.42,0 69.568,-31.151 69.568,-69.573c0,-38.42 -31.148,-69.567 -69.568,-69.567" style="fill:#000;fill-rule:nonzero;"></path><path d="M73.796,51.693c0.813,-0.814 0.813,-2.134 0,-2.947c-0.815,-0.814 -2.133,-0.814 -2.947,0c-0.815,0.813 -0.815,2.133 0,2.947c0.814,0.813 2.132,0.813 2.947,0" style="fill:#000;fill-rule:nonzero;"></path><path d="M66.445,53.149c-0.814,0.813 -0.814,2.133 0,2.947c0.813,0.814 2.133,0.814 2.947,0c0.813,-0.814 0.813,-2.134 0,-2.947c-0.814,-0.813 -2.134,-0.813 -2.947,0" style="fill:#000;fill-rule:nonzero;"></path><path d="M79.231,54.233c-1.274,-1.274 -3.339,-1.272 -4.611,0l-2.713,2.712c-1.274,1.275 -1.274,3.339 0,4.612l2.978,2.978c1.274,1.275 3.338,1.274 4.611,0l2.712,-2.712c1.274,-1.274 1.274,-3.339 0,-4.612l-2.977,-2.978Z" style="fill:#000;fill-rule:nonzero;"></path><path d="M95.759,41.445c-2.151,-2.578 1.869,-7.257 4.391,-4.463c4.645,5.148 -2.237,7.041 -4.391,4.463M105.004,44.132c3.442,-6.553 -1.427,-10.381 -4.773,-13.523c-5.36,-5.039 -10.706,-7.217 -16.811,-0.241c-6.102,6.977 -2.226,15.068 3.356,19.061c5.584,3.994 14.782,1.255 18.228,-5.297" style="fill:#000;fill-rule:nonzero;"></path></svg>
+      </a>
+      <nav id="menu">
+	<ul class="navigation">
+	    		    		    			    	<li class=""><a href="https://getgrav.org/"><span>Tour</span></a></li>
+		    	    		    		    			    	<li class=""><a href="https://getgrav.org/features"><span>Features</span></a></li>
+		    	    		    		    			    	<li class="active"><a href="https://getgrav.org/blog"><span>Blog</span></a></li>
+		    	    		    		    			    	<li class=""><a href="https://getgrav.org/forum"><span>Forum</span></a></li>
+		    	    		    		    			    	<li class=""><a href="https://getgrav.org/downloads"><span>Downloads</span></a></li>
+		    	    		    	    		    	    		    	    		    	    		    	    	    <li><a href="http://learn.getgrav.org/"><span>Learn</span></a></li>
+	</ul>
+</nav>
+<div class="social-wrapper">
+	<ul class="quick-links social-buttons">
+		<li><a href="http://twitter.com/getgrav"><i class="fa fa-fw fa-twitter twitter"></i></a></li>
+		<li><a href="https://github.com/getgrav/grav"><i class="fa fa-fw fa-github github"></i></a></li>
+		<li><a href="https://gitter.im/getgrav/grav" class="js-gitter-toggle-chat-button"><i class="fa fa-fw fa-comments-o chat"></i></a></li>
+		<li><a href="https://getgrav.org/blog.atom"><i class="fa fa-fw fa-feed feed"></i></a></li>
+	</ul>
+</div>
+    </div>
+  </div>
+</header>
+    
+        <article id="content" class="post ">
+        <div id="overlap"></div>
+        <div class="container">
+                <div id="post-nav" class="tab-nav overcast">
+                    
+<div class="prev-next">
+            <a class="first" href="https://getgrav.org/blog/denver-grav-users-group"><i class="fa fa-angle-double-left"></i></a>
+        <a class="next" href="https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc"><i class="fa fa-angle-left"></i></a>
+    
+    <span class="back"></span>
+
+            <a class="prev" href="https://getgrav.org/blog/approaching-grav-1.0"><i class="fa fa-angle-right"></i></a>
+        <a class="last" href="https://getgrav.org/blog/grav-beta-released"><i class="fa fa-angle-double-right"></i></a>
+    </div>
+                </div>
+                <div class="padding">
+                                        <div class="post-text-header">
+                        <h1>OS X 10.11 El Capitan Apache Setup: Multiple PHP Versions</h1>
+                                                <h2 class="subtitle">First part in a multi-part blog series for Mac developers</h2>
+                                                <div id="post-info">
+                                <span class="post-author"><img src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/andy.jpg"> <a href="https://twitter.com/@rhuk">Andy Miller</a></span>
+                                <span class="post-extra">
+                                    <span class="post-date">posted on <strong>10/22/2015</strong></span>
+                                    <span class="post-tags">
+                                                                        <span class="post-tags-set">in <span class="post-tag-osx"><a href="https://getgrav.org/blog/tag:osx">osx</a></span> + <span class="post-tag-apache"><a href="https://getgrav.org/blog/tag:apache">apache</a></span> + <span class="post-tag-php"><a href="https://getgrav.org/blog/tag:php">php</a></span></span>
+                                                                    </span>
+
+                                    <span class="post-time"><i class="fa fa-clock-o"></i> 13 mins</span>
+                                </span>
+                        </div>
+                    </div>
+
+                    <h6>Part 1: OS X 10.11 El Capitan Web Development Environment</h6>
+<p>Developing web applications on OS X is a real joy.  There are plenty of options for setting up your development environments, including the ever-popular <a href="http://www.mamp.info/en/mamp-pro/">MAMP Pro</a> that provides a nice UI on top of <strong>Apache</strong>, <strong>PHP</strong> and <strong>MySQL</strong>.  However, there are times when MAMP Pro has slow downs, or out of date versions, or is simply behaving badly due to its restrictive system of configuration templates and non-standard builds.</p>
+<p>It is times like these that people often look for an alternative approach, and luckily there is one, and it is relatively straight-forward to setup.</p>
+<p>In this blog post, we will walk you through setting up and configuring the OS X <strong>built-in Apache</strong> and <strong>multiple PHP versions</strong>.  In the second blog post in this two-post series, we will cover <strong>MySQL</strong>, <strong>Apache virtual hosts</strong>, <strong>APC</strong> caching, and <strong>Xdebug</strong> installation.</p>
+<div class="notices info">
+<p>This post was updated 10/22/2015 to reflect OS X <strong>10.11 El Capitan</strong> rather than <strong>OS X 10.10 Yosemite</strong>. If you had this setup working with OS X 10.10 Yosemite, and have <strong>upgraded to 10.11 El Capitan</strong>, you will need to perform the <code>httpd.conf</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> changes again as the upgrade process overwrites the file. Also you will have to fix homebrew as outlined below as permissions on <code>/usr/local</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> directory are modified in such a way that brew will not working 100%.</p>
+</div>
+
+<div class="notices note">
+<p>This guide is intended for <strong>experienced web developers</strong>. If you are a beginner developer, you will be better served using <a href="http://www.mamp.info/en/mamp-pro/">MAMP or MAMP Pro</a>.</p>
+</div>
+<h1>Apache Setup</h1>
+<p><strong>OS X 10.11 El Capitan</strong> comes with the Apache 2.4 pre-installed, but there is no longer a <strong>Web Sharing</strong> preference pane in the System Preferences.</p>
+<p>Not to fret! A simple Web sharing preference pane is available from <a href="http://clickontyler.com/web-sharing/">clickontyler.com</a>.  This is a scaled down free version of the more powerful <a href="http://clickontyler.com/virtualhostx/">VirtualHostX</a>.  VirtualHostX is a pretty UI for controlling Apache, but you don't really need it.</p>
+<p>Another approach is simply to use the provided <code>apachectl</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> command from your terminal. Using the terminal is a pretty scary prospect for many people, but there's no need to fear it.</p>
+<p>To start up the web server, simply bring up the Terminal (<strong>/Applications/Utilities/Terminal</strong>) and type:</p>
+<pre><code class="hljs ruby">$ sudo apachectl start</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>To stop apache you would type:</p>
+<pre><code class="hljs ruby">$ sudo apachectl stop</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>To restart apache when you have made configuration changes, simply type:</p>
+<pre><code class="hljs ruby">$ sudo apachectl -k restart</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<div class="notices info">
+<p>The <code>-k</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> will <strong>force a restart immediately</strong> rather than asking politely to restart when apache is good and ready</p>
+</div>
+<p>So start Apache now, and then try to reach your server in a browser by pointing it at your localhost, you should see a simple header that says <strong>It works!</strong>.</p>
+<div class="notices warning">
+<p>If you cannot reach your site via <code>http://localhost</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> you might need to add an alias in your <code>/etc/hosts</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> file: <code>127.0.0.1 localhost</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>. It should exist by default.</p>
+</div>
+<h3>Document Root</h3>
+<p>The first thing we will want to do is to change the <strong>document root</strong> for Apache.  This is the folder where Apache looks to serve file from.  By default, the document root is configured as <code>/Library/WebServer/Documents</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>.  As this is a development machine, let's assume we want to change the document root to point to a folder in our own home directory. To do this, we will need to edit Apache's configuration file.</p>
+<pre><code class="hljs dts"><span class="hljs-meta-keyword">/etc/</span>apache2/httpd.conf</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>You can use whatever command line editor you are comfortable with, just realize this is a <code>root-owned</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> folder so you will need to use <code>sudo</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> to be able to edit and save the file. I prefer to use <strong>Sublime Text 3</strong> with the commandline command <code>subl</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>, others will probably prefer <code>vi</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> but If you have never used a command line editor, try <a href="http://www.tuxradar.com/content/text-editing-nano-made-easy"><code>nano</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></a>:</p>
+<pre><code class="hljs dts">$ sudo nano <span class="hljs-meta-keyword">/etc/</span>apache2/httpd.conf</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p><img alt="Nano Editor" class="center" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/nano-httpd-conf.png"></p>
+<p>Search for the term <code>DocumentRoot</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>, and you should see the following line:</p>
+<pre><code class="hljs apache"><span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> <span class="hljs-string">"/Library/WebServer/Documents"</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Change this to point to your user directory where <code>your_user</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> is the name of your user account:</p>
+<pre><code class="hljs apache"><span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> <span class="hljs-string">"/Users/your_user/Sites"</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>You also need to change the <code>&lt;Directory&gt;</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> tag reference right below the DocumentRoot line.  This should also be changed to point to your new document root also:</p>
+<pre><code class="hljs cpp">&lt;Directory <span class="hljs-string">"/Users/your_user/Sites"</span>&gt;</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>In that same <code>&lt;Directory&gt;</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> block you will find an <code>AllowOverride</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> setting, this should be changed as follows:</p>
+<pre><code class="hljs apache"><span class="hljs-attribute">AllowOverride</span> <span class="hljs-literal">All</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>User &amp; Group</h3>
+<p>Now we have the Apache configuration pointing to a <code>Sites</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> folder in our home directory.  One problem still exists, however.  By default, apache runs as the user <code>_www</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> and group <code>_www</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>.  This will cause permission problems when trying to access files in our home directory.  About a third of the way down the <code>httpd.conf</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> file there are two settings to set the <code>User</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> and <code>Group</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> Apache will run under.  Change these to match your user account (replace <code>your_user</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> with your real username), with a group of <code>staff</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>:</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">User</span> your_user
+Group staff</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>PHP 7.0 Additional Changes</h3>
+<p>Although this is not needed for PHP 5.X, it <strong>is needed</strong> for PHP 7.0 and as we cover that below it's safer to just add it now.  So scroll down until you see something like:</p>
+<pre><code class="hljs apache"><span class="hljs-section">&lt;FilesMatch "^\.([Hh][Tt]|[Dd][Ss]_[Ss])"&gt;</span>
+    <span class="hljs-attribute">Require</span> <span class="hljs-literal">all</span> denied
+<span class="hljs-section">&lt;/FilesMatch&gt;</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Below this paste the following:</p>
+<pre><code class="hljs apache"><span class="hljs-section">&lt;FilesMatch \.php$&gt;</span>
+    <span class="hljs-attribute"><span class="hljs-nomarkup">SetHandler</span></span> application/x-httpd-php
+<span class="hljs-section">&lt;/FilesMatch&gt;</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Also you must set the Directory Indexes for PHP explicitly, so search for this block:</p>
+<pre><code class="hljs twig"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">IfModule</span> <span class="hljs-attr">dir_module</span>&gt;</span>
+    DirectoryIndex index.html
+<span class="hljs-tag">&lt;/<span class="hljs-name">IfModule</span>&gt;</span></span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>and replace it with this:</p>
+<pre><code class="hljs perl">&lt;IfModule dir_module&gt;
+    DirectoryIndex <span class="hljs-keyword">index</span>.php <span class="hljs-keyword">index</span>.html
+&lt;<span class="hljs-regexp">/IfModule&gt;</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p><strong>Save</strong> the file.</p>
+<h3>Create a Sites Folder</h3>
+<p>Of course you will now need to restart your Apache with <code>sudo apachectl restart</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> to pick up the changes you just made to the configuration file.</p>
+<p>Now, you need to create a <code>Sites</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> folder in the root of your home directory.  You can do this in your terminal, or in Finder. In this new <code>Sites</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> folder create a simple <code>index.html</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> and put some dummy content in it like: <code>&lt;h1&gt;My User Web Root&lt;/h1&gt;</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>.</p>
+<pre><code class="hljs twig"><span class="xml">$ mkdir ~/Sites
+$ echo "<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>My User Web Root<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>" &gt; ~/Sites/index.html</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Restart apache to ensure your configuration changes have taken effect:</p>
+<pre><code class="hljs ruby">$ sudo apachectl -k restart</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Pointing your browser to <code>http://localhost</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> should display your new message.  If you have that working, we can move on!</p>
+<h1>Homebrew</h1>
+<p>This process relies heavily on the OS X package manager called <strong>Homebrew</strong>.  Using the <code>brew</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> command you can easily add powerful functionality to your mac.</p>
+<p><strong>Xcode 7.1</strong> and the <strong>Command Line Tools</strong> are required so make sure you install <a href="https://itunes.apple.com/us/app/xcode/id497799835?ls=1&amp;mt=12">Xcode via the Mac App Store first</a>.  Launch Xcode and agree to the Terms and Conditions, then install the Command Line Tools with this command:</p>
+<pre><code class="hljs sql">xcode-<span class="hljs-keyword">select</span> <span class="hljs-comment">--install</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p><img alt="Xcode Installation" class="center" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/xcode-install.png"></p>
+<h3>Installation</h3>
+<p>The full installation documentation can be found on the <a href="https://github.com/Homebrew/homebrew/wiki/Installation">Homebrew Wiki</a>, but we will cover the essentials. Install the homebrew with the following command in your terminal:</p>
+<pre><code class="hljs bash">$ ruby <span class="hljs-_">-e</span> <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Just follow the terminal prompts and enter your password where required. This may take a few minutes, but when complete, a quick way to ensure you have installed <code>brew</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> correctly, simply type:</p>
+<pre><code class="hljs ruby">$ brew --version</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>Verification</h3>
+<p>You should probably also run the following command to ensure everything is configured correctly:</p>
+<pre><code class="hljs ruby">$ brew doctor</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>It will instruct you if you need to correct anything.</p>
+<div class="notices info">
+<p>If you had this setup working previously with OS X 10.10 Yosemite and have upgraded to 10.11 El Capitan, you <strong>will</strong> get an error concerning the permissions on <code>/usr/local</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> due to new <a href="https://en.wikipedia.org/wiki/System_Integrity_Protection">SIP</a> changes in El Capitan. To address this simply run: <code>sudo chown -R $(whoami):admin /usr/local</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></p>
+</div>
+<p>If you already have brew installed, make sure you have the all the latest available brews:</p>
+<pre><code class="hljs ruby">$ brew update</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Now you are ready to brew!</p>
+<h1>Install PHP 5.4, 5.5, 5.6, 7.0</h1>
+<p>Now we have HomeBrew installed it is a simple procedure to install PHP.  We will proceed by installing both <strong>PHP 5.4</strong>, <strong>PHP 5.5</strong>, <strong>PHP 5.6</strong>, and <strong>PHP 7.0</strong> and using a simple script to switch between them as we need. First though we have to <code>tap</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> into the PHP formulas and run the following commands.</p>
+<div class="notices info">
+<p>You can get a full list of available options to include by typing <code>brew info php54</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>, for example.  In this example we are just including MySQL support (required for Joomla, WordPress, etc.)</p>
+</div>
+<pre><code class="hljs ruby">$ brew tap homebrew/dupes
+$ brew tap homebrew/versions
+$ brew tap homebrew/homebrew-php
+$ brew install php54
+$ brew unlink php54
+$ brew install php55
+$ brew unlink php55
+$ brew install php56
+$ brew unlink php56
+$ brew install php7<span class="hljs-number">0</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<div class="notices note">
+<p>Of course you can choose which versions to install.  You many not need all the PHP versions listed above.</p>
+</div>
+<p>This may take some time as your computer is actually compiling Apache.</p>
+<div class="notices warning">
+<p>NOTE: If you get an error during compilation: <code>configure: error: Cannot find OpenSSL's &lt;evp.h&gt;</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> you need to reinstall your Xcode command line tools with: <code>xcode-select --install</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></p>
+</div>
+<p>Also, you may have the need to tweak configuration settings of PHP to your needs.  A common thing to change is the memory setting, or the <code>date.timezone</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> configuration.  The <code>php.ini</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> files for each version of PHP are located in the following directories:</p>
+<pre><code class="hljs dts"><span class="hljs-meta-keyword">/usr/</span>local<span class="hljs-meta-keyword">/etc/</span>php/<span class="hljs-number">5.4</span>/php.ini
+<span class="hljs-meta-keyword">/usr/</span>local<span class="hljs-meta-keyword">/etc/</span>php/<span class="hljs-number">5.5</span>/php.ini
+<span class="hljs-meta-keyword">/usr/</span>local<span class="hljs-meta-keyword">/etc/</span>php/<span class="hljs-number">5.6</span>/php.ini
+<span class="hljs-meta-keyword">/usr/</span>local<span class="hljs-meta-keyword">/etc/</span>php/<span class="hljs-number">7.0</span>/php.ini</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>Apache Setup</h3>
+<p>You have successfully installed your PHP versions, but we need to tell Apache to use them.  You will again need to edit the <code>/etc/apache2/httpd.conf</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> file and search for <code>#LoadModule php5_module</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>.  You will notice that this is line is commented out. We can ignore it because this is pointing to the version of PHP that came with OS X.  Below the other <code>LoadModule</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> lines, add this:</p>
+<pre><code class="hljs dts"><span class="hljs-meta"># Brew PHP LoadModule</span>
+LoadModule php5_module <span class="hljs-meta-keyword">/usr/</span>local<span class="hljs-meta-keyword">/opt/</span>php54<span class="hljs-meta-keyword">/libexec/</span>apache2/libphp5.so</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>This will tell Apache to use PHP 5.4 to handle PHP requests.  <strong>We will add the ability to switch PHP versions later</strong>.</p>
+<p>You should also take this time to uncomment the <code>mod_rewrite.so</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> module definition so that it will be available:</p>
+<pre><code class="hljs dts">LoadModule rewrite_module libexec<span class="hljs-meta-keyword">/apache2/</span>mod_rewrite.so</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Let's <strong>restart Apache again</strong>, now that we have installed PHP:</p>
+<pre><code class="hljs ruby">$ sudo apachectl restart</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>Validating PHP Installation</h3>
+<p>The best way to test if PHP is installed and running as expected is to make use of <a href="http://php.net/manual/en/function.phpinfo.php">phpinfo()</a>.  This is not something you want to leave on a production machine, but it's invaluable in a development environment.</p>
+<p>Simply create a file called <code>info.php</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> in your <code>Sites/</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> folder you created earlier. In that file, just enter the line:</p>
+<pre><code class="hljs cpp">&lt;?<span class="hljs-function">php <span class="hljs-title">phpinfo</span><span class="hljs-params">()</span></span>;</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Point your browser to <code>http://localhost/info.php</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> and you should see a shiny PHP information page:</p>
+<p><img alt="PHPInfo()" class="center" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/phpinfo.png"></p>
+<p>If you see a similar <strong>phpinfo</strong> result, congratulations! You now have Apache and PHP running successfully.</p>
+<h1>PHP Switcher Script</h1>
+<p>We hard-coded Apache to use <strong>PHP 5.4</strong>, but we really want to be able to switch between versions.  Luckily, some industrious individual has already done the hard work for us and written a very handy little <a href="https://github.com/conradkleinespel/sphp-osx">PHP switcher script</a>.</p>
+<p>It is useful to have a your own local <code>bin</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> folder in your home directory.  We will create one and setup the <code>sphp</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> script:</p>
+<pre><code class="hljs javascript">$ mkdir -p ~<span class="hljs-regexp">/bin/</span>
+$ curl -L https:<span class="hljs-comment">//raw.githubusercontent.com/conradkleinespel/sphp-osx/master/sphp &gt; ~/bin/sphp</span>
+$ chmod +x ~<span class="hljs-regexp">/bin/</span>sphp</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>Update Your Path</h3>
+<p>Now we want to ensure this script is easily found when we are in the terminal, so we need add our <code>/Users/your_user/bin</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> directory to our path, as well as putting HomeBrew's preferred <code>/usr/local/bin</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> and <code>/usr/local/sbin</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> before OS X's default <code>/usr/bin</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> folder. Depending on your shell your using, you may need to add this line to <code>~/.profile</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>, <code>~/.bash_profile</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>, or <code>~/.zshrc</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>.</p>
+<p>We will assume you are using the default bash shell, so add this line to a your <code>.profile</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> (create it if it doesn't exist) file at the root of your user directory:</p>
+<pre><code class="hljs ruby">export PATH=<span class="hljs-regexp">/usr/local</span><span class="hljs-regexp">/bin:/usr</span><span class="hljs-regexp">/local/sbin</span><span class="hljs-symbol">:</span>$PATH<span class="hljs-symbol">:/Users/your_user/bin</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<div class="notices warning">
+<p>Replace <strong>your_user</strong> with your actual user account.  E.g. <code>/Users/joeschmo/bin</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></p>
+</div>
+<p>At this point, I strongly recommend closing <strong>ALL your terminal tabs and windows</strong>.  This will mean opening a new terminal to continue with the next step.  This is strongly recommended because some really strange path issues can arise with existing terminals (trust me, I have seen it!).</p>
+<p>You can double-check and ensure your path has been updated to put the <code>/usr/local</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> paths first with the following command:</p>
+<pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>Apache Setup - Take 2</h3>
+<p>Although we configured Apache to use PHP earlier, we now need to change this again to point the PHP module to a location used by the <strong>PHP switcher script</strong>. You will again need to edit the <code>/etc/apache2/httpd.conf</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> file and search for the <code>Brew PHP</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> text that you added earlier.  <strong>Edit</strong> the <code>LoadModule</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> line, to this:</p>
+<pre><code class="hljs perl"><span class="hljs-comment"># Brew PHP LoadModule for `sphp` switcher</span>
+LoadModule php5_module /usr/<span class="hljs-keyword">local</span>/lib/libphp5.so
+<span class="hljs-comment">#LoadModule php7_module /usr/local/lib/libphp7.so</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<div class="notices warning">
+<p>It is important that you <strong>remove all</strong> other commented out <code>LoadModule php5_module</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> entries at this point or it will confuse the <code>sphp</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> switcher. Also the Commented out line for <code>php7_module</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> is important and required if you are installing PHP7 as it uses a unique PHP module handler.</p>
+</div>
+<p><strong>IMPORTANT:</strong> Switch to your PHP 5.4 version with the <code>sphp</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> switch command :</p>
+<pre><code class="hljs ruby">$ sphp <span class="hljs-number">54</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<pre><code class="hljs cpp">PHP version <span class="hljs-number">54</span> found
+Unlinking old binaries...
+Linking <span class="hljs-keyword">new</span> binaries...
+Linking /usr/local/Cellar/php54/<span class="hljs-number">5.4</span><span class="hljs-number">.45</span>_3... <span class="hljs-number">17</span> symlinks created
+Linking <span class="hljs-keyword">new</span> modphp addon...
+Fixing LoadModule...
+Updating version file...
+Restarting system Apache...
+Done.</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<h3>Testing the PHP Switching</h3>
+<p>After you have completed these steps, you should be able to switch your php version by using the command:</p>
+<pre><code class="hljs ruby">$ sphp <span class="hljs-number">55</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>You will probably have to enter your administrator password, and it should give you some feedback:</p>
+<pre><code class="hljs cpp">PHP version <span class="hljs-number">55</span> found
+Unlinking old binaries...
+Linking <span class="hljs-keyword">new</span> binaries...
+Linking /usr/local/Cellar/php55/<span class="hljs-number">5.5</span><span class="hljs-number">.30</span>... <span class="hljs-number">17</span> symlinks created
+Linking <span class="hljs-keyword">new</span> modphp addon...
+Fixing LoadModule...
+Updating version file...
+Restarting system Apache...
+Done.</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>Test to see if your Apache is now running PHP 5.5 by again pointing your browser to <code>http://localhost/info.php</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>. With a little luck, you should see something like this:</p>
+<p><img alt="PHPInfo()" class="center" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/phpinfo-55.png"></p>
+<h3>Updating PHP and other Brew Packages</h3>
+<p>Brew makes it super easy to update PHP and the other packages you install.  The first step is to <strong>update</strong> Brew so that it gets a list of available updates:</p>
+<pre><code class="hljs ruby">$ brew update</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>This will spit out a list of available updates, and any deleted formulas.  To upgrade the packages simply type:</p>
+<pre><code class="hljs ruby">$ brew upgrade</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<div class="notices info">
+<p>You will need to switch to each of your installed PHP versions and run <strong>update</strong> again to get updates for each PHP version and ensure you are running the version of PHP you intend.</p>
+</div>
+<h3>Activating Specific/Latest PHP Versions</h3>
+<p>Due to the way our PHP linking is set up, only one version of PHP is <strong>linked</strong> at a time, only the current <strong>active</strong> version of PHP will be updated to the latest version.  You can see the current active version by typing:</p>
+<pre><code class="hljs ruby">$ php -v</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>And you can see the specific versions of PHP available by typing:</p>
+<pre><code class="hljs dts">$ brew info php55
+homebrew<span class="hljs-meta-keyword">/php/</span>php55: stable <span class="hljs-number">5.5</span><span class="hljs-number">.30</span> (bottled), HEAD
+<span class="hljs-symbol">https:</span><span class="hljs-comment">//php.net</span>
+Conflicts with: php53, php54, php56, php70
+<span class="hljs-meta-keyword">/usr/</span>local/Cellar<span class="hljs-meta-keyword">/php55/</span><span class="hljs-number">5.5</span><span class="hljs-number">.28</span> (<span class="hljs-number">498</span> files, <span class="hljs-number">51</span>M)
+  Poured from bottle
+<span class="hljs-meta-keyword">/usr/</span>local/Cellar<span class="hljs-meta-keyword">/php55/</span><span class="hljs-number">5.5</span><span class="hljs-number">.29</span>_3 (<span class="hljs-number">327</span> files, <span class="hljs-number">49</span>M)
+  Poured from bottle
+<span class="hljs-meta-keyword">/usr/</span>local/Cellar<span class="hljs-meta-keyword">/php55/</span><span class="hljs-number">5.5</span><span class="hljs-number">.30</span> (<span class="hljs-number">327</span> files, <span class="hljs-number">49</span>M)
+  Poured from bottle
+  ...</code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>You will see all the versions of PHP 5.5 brew has available and then you can switch to a specific version by typing:</p>
+<pre><code class="hljs cpp">$ brew <span class="hljs-keyword">switch</span> php55 <span class="hljs-number">5.5</span><span class="hljs-number">.28</span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre>
+<p>OK, that wraps up Part 1 of this 3 part series You now have a fully functional Apache 2.4 installation with a quick-and-easy way to toggle between PHP 5.4, 5.5, 5.6, and 7.0.  <a href="https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc">Check out Part 2</a> to find out how to setup your environment with <strong>MySQL</strong>, <strong>Virtual Hosts</strong>, <strong>APC</strong> caching, <strong>YAML</strong>, and <strong>Xdebug</strong>. Also <a href="https://getgrav.org/blog/mac-os-x-apache-setup-ssl">take a gander at Part 3</a> to find out how to setup <strong>SSL</strong> for your Apache Virtual Hosts.</p>
+
+                                <div id="disqus_thread"><iframe id="dsq-app2" name="dsq-app2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 7799px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="indicator-north" name="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 799px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 799px !important; max-width: 799px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/saved_resource(1).html"></iframe><iframe id="indicator-south" name="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 799px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 799px !important; max-width: 799px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;" src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/saved_resource(2).html"></iframe></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions';
+this.page.identifier = 'f48ef6a310513a5cad4ef3c09322561e';
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//getgrav.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the &lt;a href="https://disqus.com/?ref_noscript" rel="nofollow"&gt;comments powered by Disqus.&lt;/a&gt;</noscript>
+            
+                </div>
+                <div id="post-nav" class="tab-nav overcast">
+                    
+<div class="prev-next">
+            <a class="first" href="https://getgrav.org/blog/denver-grav-users-group"><i class="fa fa-angle-double-left"></i></a>
+        <a class="next" href="https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc"><i class="fa fa-angle-left"></i></a>
+    
+    <span class="back"></span>
+
+            <a class="prev" href="https://getgrav.org/blog/approaching-grav-1.0"><i class="fa fa-angle-right"></i></a>
+        <a class="last" href="https://getgrav.org/blog/grav-beta-released"><i class="fa fa-angle-double-right"></i></a>
+    </div>
+                </div>
+        </div>
+    </article>
+
+        <div id="related" class="blog">
+        <div class="container">
+            <h2>Related Posts</h2>
+            <ul id="related-pages" class="item-cards">
+                                                                                                            
+<li class="item-card card">
+	<a href="https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc">
+		<div class="card__thumb overcast">
+			<h3 class="card__header">osx</h3>
+		</div>
+		<div class="card__date darken_10">
+			<span class="card__date__day">22</span>
+			<span class="card__date__month">Oct</span>
+		</div>
+		<div class="card__tags">
+				<span class="darken_10">apache</span>
+				<span class="darken_10">php</span>
+				</div>
+	</a>
+	<div class="card__body">
+		<div class="card__title"><a href="https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc">OS X 10.11 El Capitan Apache Setup: MySQL, APC &amp; More...</a></div>
+		<div class="card__description">
+			<h6>Part 2: OS X 10.11 El Capitan Web Development Environment:</h6>
+<p>In <a href="https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions">Part 1</a> of this 3-part series, we covered configuring Apache on OS X 10.11 El Capitan to work better with your local user account, as well as the installation process for installing multiple versions of PHP.</p>
+<p>In this <strong>Part 2</strong>, we will cover installing <strong>MySQL</strong>, <strong>Virtual Hosts</strong>, <strong>APC</strong> caching, <strong>YAML</strong>, and <strong>Xdebug</strong>. After finishing this tutorial, be sure to check out <a href="https://getgrav.org/blog/mac-os-x-apache-setup-ssl">how to enable SSL in Part 3 of the series</a></p>
+<div class="notices info">
+<p>This post was updated 10/22/2015 to reflect OS X 10.11 El Capitan rather than OS X 10.10 Yosemite.</p>
+</div>
+
+		</div>
+	</div>
+	<div class="card__footer">
+		<span class="card__author"><img src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/andy.jpg"> Andy Miller</span>
+		<span class="card__time"><i class="fa fa-clock-o"></i> 7 mins</span>
+	</div>
+</li>
+                                                                                                                                        
+<li class="item-card card">
+	<a href="https://getgrav.org/blog/mac-os-x-apache-setup-ssl">
+		<div class="card__thumb overcast">
+			<h3 class="card__header">osx</h3>
+		</div>
+		<div class="card__date darken_10">
+			<span class="card__date__day">22</span>
+			<span class="card__date__month">Oct</span>
+		</div>
+		<div class="card__tags">
+				<span class="darken_10">apache</span>
+				<span class="darken_10">php</span>
+				<span class="darken_10">ssl</span>
+				</div>
+	</a>
+	<div class="card__body">
+		<div class="card__title"><a href="https://getgrav.org/blog/mac-os-x-apache-setup-ssl">OS X 10.11 El Capitan Apache Setup: SSL</a></div>
+		<div class="card__description">
+			<h6>Part 3: OS X 10.11 El Capitan Web Development Environment:</h6>
+<p>In <a href="https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions">Part 1</a> of this 2-part series, we covered configuring Apache on OS X 10.11 El Capitan to work better with your local user account, as well as the installation process for installing multiple versions of PHP. In <a href="https://getgrav.org/blog/mac-os-x-apache-setup-mysql-vhost-apc">Part 2</a>, we covered installing <strong>MySQL</strong>, <strong>Virtual Hosts</strong>, <strong>APC</strong> caching, <strong>YAML</strong>, and <strong>Xdebug</strong>.</p>
+<p>In this <strong>Part 3</strong>, we will cover getting your site setup with SSL support.</p>
+<div class="notices info">
+<p>This post was updated 10/22/2015 to reflect OS X 10.11 El Capitan rather than OS X 10.10 Yosemite.</p>
+</div>
+
+		</div>
+	</div>
+	<div class="card__footer">
+		<span class="card__author"><img src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/andy.jpg"> Andy Miller</span>
+		<span class="card__time"><i class="fa fa-clock-o"></i> 3 mins</span>
+	</div>
+</li>
+                                                                                                                                        
+<li class="item-card card">
+	<a href="https://getgrav.org/blog/development-strategy">
+		<div class="card__thumb blue">
+			<h3 class="card__header">journal</h3>
+		</div>
+		<div class="card__date darken_10">
+			<span class="card__date__day">14</span>
+			<span class="card__date__month">Nov</span>
+		</div>
+		<div class="card__tags">
+				</div>
+	</a>
+	<div class="card__body">
+		<div class="card__title"><a href="https://getgrav.org/blog/development-strategy">Picking a Development Strategy</a></div>
+		<div class="card__description">
+			<p>So, you’ve decided to get Grav and build a site with it. Congratulations! Building with Grav gives you the power and flexibility you need to realize your site but you need to develop that site first.  Using an efficient development strategy will allow you to build your site faster and hassle-free. You might even have fun while doing it!</p>
+<p>When you look at how easy it is to set Grav up and get it running on a <strong>remote server</strong>, it can be very tempting to just do development there, especially given the fact that there are no databases to migrate over, and everything is file-based. However, don't be tempted by this approach! In this blog post I'll endeavor to explain why...</p>
+
+		</div>
+	</div>
+	<div class="card__footer">
+		<span class="card__author"><img src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/andy.jpg"> Andy Miller</span>
+		<span class="card__time"><i class="fa fa-clock-o"></i> 6 mins</span>
+	</div>
+</li>
+                                                            </ul>
+        </div>
+    </div>
+    
+    
+        <footer>
+      <div class="container">
+        <div class="padding">
+          <div id="up-arrow">
+            <a href="https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions#" id="totop"><i class="fa fa-angle-up pulse infinite animated"></i></a>
+          </div>
+
+          <a href="https://getgrav.org/downloads" class="button button-solid button-fancy">
+            Download Grav
+          </a>
+          <div class="row">
+            <div class="six columns right">
+              <p><a href="http://getgrav.org/">Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://www.rockettheme.com/">RocketTheme</a></p>
+              <p>CDN provided by <a href="http://maxcdn.com/"><i class="fa fa-maxcdn"></i> MaxCDN</a></p>
+              <p>Designed by <a href="https://dribbble.com/eduardo">Eduardo Santos</a></p>
+            </div>
+            <div class="six columns left">
+              <ul>
+                <li><a href="mailto:contact@getgrav.org">Contact the Grav Team</a></li>
+                <li><a href="https://getgrav.org/about">About Grav</a></li>
+                <li><a href="https://getgrav.org/media">Grav Media</a> Information</li>
+                <li><a href="https://getgrav.org/blog.atom">Grav News Feed</a></li>
+              </ul>
+            </div>
+          </div>Hosting <a href="https://www.linode.com/?utm_source=referral&amp;utm_medium=website&amp;utm_content=[GravCMS]&amp;utm_campaign=sponsorship">Sponsored by Linode</a> - managed by <a href="https://www.serverpilot.io/?refcode=fb58eb54aecc">ServerPilot</a> - monitoring by <a href="https://pingometer.com/">Pingometer</a><p></p>
+          <p>Copyright @2016 - Grav CMS - All rights reserved - Grav is released under the <a href="https://github.com/getgrav/grav/blob/develop/LICENSE.txt">MIT license</a></p>
+        </div>
+      </div>
+    </footer>
+      </div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-57776306-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <script>
+      ((window.gitter = {}).chat = {}).options = {
+        room: 'getgrav/grav'
+      };
+      document.addEventListener('gitter-sidecar-instance-started', function(e) {
+          $('.gitter-open-chat-button').html('<i class="fa fa-comments-o fa-fw"></i> Open Chat');
+        });
+    </script>
+    <script src="./OS X 10.11 El Capitan Apache Setup_ Multiple PHP Versions _ Grav_files/sidecar.v1.js" async="" defer=""></script>
+
+
+<aside class="gitter-chat-embed is-collapsed"><div class="gitter-chat-embed-action-bar"><a class="gitter-chat-embed-action-bar-item gitter-chat-embed-action-bar-item-pop-out" aria-label="Open Chat in Gitter.im" href="https://gitter.im/getgrav/grav" target="_blank"></a><button class="gitter-chat-embed-action-bar-item gitter-chat-embed-action-bar-item-collapse-chat" aria-label="Collapse Gitter Chat"></button></div><div class="gitter-chat-embed-loading-wrapper">
+        <div class="gitter-chat-embed-loading-indicator gitter-icon"></div>
+      </div></aside><a href="https://gitter.im/getgrav/grav" class="gitter-open-chat-button"><i class="fa fa-comments-o fa-fw"></i> Open Chat</a></body></html>
