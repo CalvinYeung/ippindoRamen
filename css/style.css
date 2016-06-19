@@ -67,6 +67,10 @@ Website:
     font-family: 'Julius Sans One', sans-serif;
 }
 
+.phoneNumber { 
+    margin-bottom: 15px;
+}
+
 .locationContainer h4{
     color: black;
     font-weight: bold;
@@ -1471,6 +1475,7 @@ ul.page-footer-list li i { padding-right: 10px }
 .text-footer p { text-align: left }
 .address p {
     text-align: center;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 /*slider css*/
