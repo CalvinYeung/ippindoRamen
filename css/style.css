@@ -136,6 +136,15 @@ Website:
     font-family: 'Julius Sans One', sans-serif;
 }
 
+.nowDeliver {
+    color: white !important;
+    background-color: red !important; 
+}
+
+.nowDeliver:hover {
+    color: black !important;
+}
+
 .nowDeliverHover {
    /* display: none;*/
     font-size: 15px;
