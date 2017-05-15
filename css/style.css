@@ -136,6 +136,17 @@ Website:
     font-family: 'Julius Sans One', sans-serif;
 }
 
+.nowDeliverHover {
+   /* display: none;*/
+    font-size: 15px;
+    color: red;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.nowDeliver:hover + .nowDeliverHover {
+    display: block;
+}
+
 .ramenTitle {
     font-size: 45px;
     color: white;
